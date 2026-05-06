@@ -10,6 +10,7 @@
     },
     "require": {
         "composer/installers": "^2.3",
+        "drupal/admin_toolbar": "^3.6",
         "drupal/core": "11.x-dev",
         "drupal/core-project-message": "^10.3",
         "drupal/ctools": "^4.1",
@@ -24,7 +25,6 @@
         "colinodell/psr-testlogger": "^1.2",
         "composer/composer": "^2.8.1",
         "drupal/coder": "^8.3.10",
-        "drupal/admin_toolbar": "^3.5",
         "justinrainbow/json-schema": "^5.2",
         "lullabot/mink-selenium2-driver": "^1.7.3",
         "lullabot/php-webdriver": "^2.0.5",
@@ -88,25 +88,25 @@
             "core": [
                 "type:drupal-core"
             ],
-            "libraries/{$name}": [
+            "web/libraries/{$name}": [
                 "type:drupal-library"
-            ],
-            "modules/contrib/{$name}": [
+                ],
+            "web/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
-            "profiles/contrib/{$name}": [
+            "web/profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
-            "themes/contrib/{$name}": [
+            "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
             "drush/Commands/contrib/{$name}": [
                 "type:drupal-drush"
             ],
-            "modules/custom/{$name}": [
+            "web/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
-            "themes/custom/{$name}": [
+            "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ]
         },
