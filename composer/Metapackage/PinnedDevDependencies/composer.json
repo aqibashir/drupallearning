@@ -21,7 +21,6 @@
         "composer/xdebug-handler": "3.0.5",
         "dealerdirect/phpcodesniffer-composer-installer": "v1.0.0",
         "doctrine/instantiator": "2.0.0",
-        "drupal/admin_toolbar": "3.5.1",
         "drupal/coder": "8.3.28",
         "google/protobuf": "v4.29.3",
         "justinrainbow/json-schema": "5.3.0",
