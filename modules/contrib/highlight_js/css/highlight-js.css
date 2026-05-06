@@ -1,0 +1,8 @@
+.highlight-js-preview {
+  border: 2px black dashed;
+  padding: 1rem;
+  pointer-events: none;
+}
+.ui-dialog--wide {
+  min-width: 80%;
+}

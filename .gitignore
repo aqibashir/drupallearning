@@ -2,3 +2,11 @@ vendor/
 .ddev/
 sites/default/files/
 sites/default/settings.php
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/

@@ -1,0 +1,18 @@
+name: Simple Smart Classy Version
+type: theme
+description: "A sleek & Practical theme for curious minds."
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+core: 8.x
+base theme: claro
+screenshot: simplesmartscreenshot.png
+regions:
+  header: Header
+  simplesmartmenu: Navigation
+  content: Content
+  footer: Footer
+  page_top: Page top
+  page_bottom: Page bottom
+libraries:
+  - simplesmart/global-css
+  - simplesmart/pacifico
+ 

@@ -1,0 +1,22 @@
+{
+  "name": "drupal",
+  "version": "1.0.0",
+  "description": "<img alt=\"Drupal Logo\" src=\"https://www.drupal.org/files/Wordmark_blue_RGB.png\" height=\"60px\">",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aqibbashir4/drupallearning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aqibbashir4/drupallearning/issues"
+  },
+  "homepage": "https://github.com/aqibbashir4/drupallearning#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.2.2"
+  }
+}
