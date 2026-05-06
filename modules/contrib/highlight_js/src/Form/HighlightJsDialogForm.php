@@ -62,7 +62,7 @@ class HighlightJsDialogForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, string $uuid = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?string $uuid = NULL) {
 
     $request = $this->getRequest();
 
@@ -110,7 +110,7 @@ class HighlightJsDialogForm extends FormBase {
     $role_based_copy = $config['plugin_config']['role_based_copy'] ? TRUE : FALSE;
 
     $roles = Role::loadMultiple();
-    $options = array();
+    $options = [];
     foreach ($roles as $rid => $role) {
       $options[$rid] = $role->label();
     }
@@ -153,7 +153,7 @@ class HighlightJsDialogForm extends FormBase {
     ];
 
     $copy_enable = $highlight_js_config->get('copy_enable');
-    if($copy_enable) {
+    if ($copy_enable) {
       $form['config']['role_based_copy'] = [
         '#type' => 'checkbox',
         '#title' => $this->t('Role Based Copy Button'),

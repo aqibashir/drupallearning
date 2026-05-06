@@ -45,7 +45,14 @@ class HighlightJsSettingsForm extends ConfigFormBase {
       '#type' => 'checkboxes',
       '#title' => $this->t('Select available languages'),
       '#options' => highlight_js_available_languages(),
-      '#default_value' => $config->get('languages') ?: ['c', 'css', 'java', 'javascript', 'markup', 'php'],
+      '#default_value' => $config->get('languages') ?? [
+        'c',
+        'css',
+        'java',
+        'javascript',
+        'markup',
+        'php',
+      ],
       '#required' => TRUE,
     ];
 
@@ -79,7 +86,7 @@ class HighlightJsSettingsForm extends ConfigFormBase {
     $form['copy_btn_config']['copy_bg_color'] = [
       '#type' => 'color',
       '#title' => $this->t('Copy Button Background Color'),
-      '#default_value' => $config->get('copy_bg_color') ?: '#4CAF50',
+      '#default_value' => $config->get('copy_bg_color') ?? '#4243b1',
       '#description' => $this->t('Choose a background color for the "Copy" button.'),
       '#states' => [
         'visible' => [
@@ -91,7 +98,7 @@ class HighlightJsSettingsForm extends ConfigFormBase {
     $form['copy_btn_config']['copy_txt_color'] = [
       '#type' => 'color',
       '#title' => $this->t('Copy Button Text Color'),
-      '#default_value' => $config->get('copy_txt_color') ?: '#ffffff',
+      '#default_value' => $config->get('copy_txt_color') ?? '#ffffff',
       '#description' => $this->t('Choose a background color for the "Copy" button text.'),
       '#states' => [
         'visible' => [
@@ -103,7 +110,7 @@ class HighlightJsSettingsForm extends ConfigFormBase {
     $form['copy_btn_config']['copy_btn_text'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Copy Button Text'),
-      '#default_value' => $config->get('copy_btn_text') ?: '',
+      '#default_value' => $config->get('copy_btn_text') ?? '',
       '#textfield' => $this->t('Enter the "Copy" button text.'),
       '#states' => [
         'visible' => [
@@ -112,11 +119,23 @@ class HighlightJsSettingsForm extends ConfigFormBase {
       ],
     ];
 
-    $form['copy_btn_config']['copy_success_text'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('Copy Success Text'),
-      '#default_value' => $config->get('copy_success_text') ?: '',
-      '#description' => $this->t('Enter the text for copied to clipboard message.'),
+    $form['copy_btn_config']['success_bg_transparent'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Copy Success Transparent Background'),
+      '#default_value' => $config->get('success_bg_transparent'),
+      '#description' => $this->t('Enable this option for a transparent success message background.'),
+      '#states' => [
+        'visible' => [
+          ':input[name="copy_enable"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $form['copy_btn_config']['success_bg_color'] = [
+      '#type' => 'color',
+      '#title' => $this->t('Copy Success Background Color'),
+      '#default_value' => $config->get('success_bg_color') ?? '#4243b1',
+      '#description' => $this->t('Choose a background color for the success message.'),
       '#states' => [
         'visible' => [
           ':input[name="copy_enable"]' => ['checked' => TRUE],
@@ -127,8 +146,20 @@ class HighlightJsSettingsForm extends ConfigFormBase {
     $form['copy_btn_config']['success_txt_color'] = [
       '#type' => 'color',
       '#title' => $this->t('Copy Success Text Color'),
-      '#default_value' => $config->get('success_txt_color') ?: '#4CAF50',
+      '#default_value' => $config->get('success_txt_color') ?? '#ffffff',
       '#description' => $this->t('Enter the text for copied to clipboard message font color.'),
+      '#states' => [
+        'visible' => [
+          ':input[name="copy_enable"]' => ['checked' => TRUE],
+        ],
+      ],
+    ];
+
+    $form['copy_btn_config']['copy_success_text'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Copy Success Text'),
+      '#default_value' => $config->get('copy_success_text') ?? '',
+      '#description' => $this->t('Enter the text for copied to clipboard message.'),
       '#states' => [
         'visible' => [
           ':input[name="copy_enable"]' => ['checked' => TRUE],
@@ -146,7 +177,7 @@ class HighlightJsSettingsForm extends ConfigFormBase {
       '#type' => 'checkboxes',
       '#title' => $this->t('User Roles'),
       '#options' => $options,
-      '#default_value' => $config->get('role_copy_access') ?: [],
+      '#default_value' => $config->get('role_copy_access') ?? [],
       '#description' => $this->t('User Role-Based Copy Button Accessibility.'),
       '#states' => [
         'visible' => [
@@ -158,7 +189,7 @@ class HighlightJsSettingsForm extends ConfigFormBase {
     $form['theme'] = [
       '#type' => 'select',
       '#title' => $this->t('Default theme'),
-      '#default_value' => $config->get('theme') ?: 'highlight-tomorrow',
+      '#default_value' => $config->get('theme') ?? 'github',
       '#options' => highlight_js_available_themes(),
       '#description' => $this->t("Select the default theme"),
       '#required' => TRUE,
@@ -178,12 +209,17 @@ class HighlightJsSettingsForm extends ConfigFormBase {
     $config = $this->config('highlight_js.settings');
     $values = $form_state->getValues();
     $config->set('copy_enable', $values['copy_enable']);
+
     $config->set('copy_bg_transparent', $values['copy_bg_transparent']);
     $config->set('copy_bg_color', $values['copy_bg_color']);
     $config->set('copy_txt_color', $values['copy_txt_color']);
     $config->set('copy_btn_text', $values['copy_btn_text']);
-    $config->set('copy_success_text', $values['copy_success_text']);
+
+    $config->set('success_bg_transparent', $values['success_bg_transparent']);
+    $config->set('success_bg_color', $values['success_bg_color']);
     $config->set('success_txt_color', $values['success_txt_color']);
+    $config->set('copy_success_text', $values['copy_success_text']);
+
     $config->set('role_copy_access', $values['role_copy_access']);
     $config->set('languages', $values['languages']);
     $config->set('theme', $values['theme']);

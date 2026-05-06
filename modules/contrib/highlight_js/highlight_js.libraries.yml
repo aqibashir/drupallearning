@@ -1,5 +1,4 @@
 highlight_js:
-  version: 1.x
   js:
     js/build/highlightJs.js: { preprocess: false, minified: true }
   css:
@@ -10,7 +9,6 @@ highlight_js:
     - editor/drupal.editor.dialog
 
 highlight_js.js:
-  version: VERSION
   js:
     https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js: { type: external, minified: true }
     https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js: { type: external, minified: true }
@@ -19,7 +17,6 @@ highlight_js.js:
     - core/drupal
 
 highlight_js.custom:
-  version: VERSION
   js:
     js/highlight-custom.js: {}
   css:
