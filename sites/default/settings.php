@@ -881,4 +881,7 @@ if (getenv('IS_DDEV_PROJECT') == 'true' && file_exists(__DIR__ . '/settings.ddev
 if (defined('PANTHEON_ENVIRONMENT') && file_exists(__DIR__ . '/settings.pantheon.php')) {
   include __DIR__ . '/settings.pantheon.php';
 }
+if (empty($settings['hash_salt'])) {
+  $settings['hash_salt'] = 'testingprivate01-pantheon-migration-2026-change-me-later';
+}
 
